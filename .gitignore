@@ -1,0 +1,8 @@
+# Ignore all object files
+*.o
+
+# Ignore the pthread directory (if it exists)
+*
+
+# Ignore the extensions.json file
+extensions.json
