@@ -61,7 +61,7 @@ int main (int argc, char *argv[])
 
     /* Create the decrement thread */
     threadParams[i].threadIdx = i; /* Set the thread index */
-    pthread_create(&threads[i], (void *)0, decThread, (void *)&(threadParams[i]));
+    rc = pthread_create(&threads[i], (void *)0, decThread, (void *)&(threadParams[i]));
 
     /* Wait for both threads to complete */
     for(i = 0; i < 2; i++)
@@ -70,5 +70,5 @@ int main (int argc, char *argv[])
     /* Print completion message */
     printf("TEST COMPLETE\n");
 
-    return 0; /* Return success */
+    return rc; /* Return success */
 }
