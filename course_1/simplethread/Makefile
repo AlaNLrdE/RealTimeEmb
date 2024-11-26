@@ -10,20 +10,25 @@ HFILES= logger.h
 CFILES= pthread.c logger.c
 
 SRCS= ${HFILES} ${CFILES}
-OBJS= ${CFILES:.c=.o}
+OBJS= $(patsubst %.c,build/%.o,$(CFILES))
 
-all:	pthread
+all: build_dir pthread
+
+build_dir:
+	mkdir -p build
 
 clean:
-	-rm -f *.o *.d
-	-rm -f perfmon pthread
+	-rm -f build/*.o build/*.d
+	-rm -f build/pthread
 
-distclean:
-	-rm -f *.o *.d
-	-rm -f pthread
+distclean: clean
+	-rm -rf build
 
 pthread: $(OBJS)
 	$(CC) $(LDFLAGS) $(CFLAGS) -o $@ $(OBJS) -lpthread
+
+build/%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
 depend:
 
