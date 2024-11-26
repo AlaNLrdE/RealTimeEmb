@@ -1,5 +1,6 @@
 # Ignore all object files
 *.o
+*.log
 
 # Ignore the extensions.json file
 extensions.json
