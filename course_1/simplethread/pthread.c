@@ -2,6 +2,8 @@
 #include <stdlib.h>  /* Standard library */
 #include <stdio.h>   /* Standard I/O library */
 #include <sched.h>   /* Scheduling library */
+#include <syslog.h>  /* System logging library */
+#include "logger.h" /* Header file for the logger */
 
 #define NUM_THREADS 64 /* Define the number of threads */
 
@@ -37,6 +39,8 @@ int main (int argc, char *argv[])
 {
     int rc; /* Return code for pthread functions */
     int i;  /* Loop counter */
+
+    log_system_info();
 
     /* Create threads */
     for(i = 1; i < NUM_THREADS; i++)
