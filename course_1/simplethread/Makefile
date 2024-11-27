@@ -6,8 +6,8 @@ CDEFS=
 CFLAGS= -O3 $(INCLUDE_DIRS) $(CDEFS) -Wall
 LIBS= 
 
-HFILES= logger.h
-CFILES= pthread.c logger.c
+HFILES= 
+CFILES= pthread.c
 
 SRCS= ${HFILES} ${CFILES}
 OBJS= $(patsubst %.c,build/%.o,$(CFILES))
@@ -19,7 +19,7 @@ build_dir:
 
 clean:
 	-rm -f build/*.o build/*.d
-	-rm -f build/pthread
+	-rm -f pthread
 
 distclean: clean
 	-rm -rf build

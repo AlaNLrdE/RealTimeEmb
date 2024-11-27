@@ -1,1 +1,0 @@
-void log_system_info();
